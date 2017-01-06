@@ -1,0 +1,24 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<!--<ion-view view-title="{{chat.name}}">-->
+<ion-content class="padding" style="padding-top: 50px;">
+	<video controls="controls" src="http://vodctz2y190.vod.126.net/vodctz2y190/b203419f70d4479a99fc61483ef3bd3d_1482303150299_1482304584429_1096389-00000.mp4"  width="100%"></video>
+	<ul>
+		<li ng-repeat="item in items" style="border: 1px solid gainsboro ;margin-top: 10px; padding: 10px;">
+			<div style="height: 30px;display: flex;align-items: center;">
+				<!--<span>-->
+				<img width="30px" style=" margin-right: 10px; border-radius: 50%;" ng-src="{{item.avatar||'http://img5.cache.netease.com/tie/images/noface80_80.png' }} " alt="" />	
+				<!--ssss-->
+				<!--</span>-->
+				{{item.nick_name}}
+				<!--<span style="display: inline-block;height: 30px;line-height: 30px;  margin-left: 20px;">{{item.nick_name}}</span>-->
+			</div>
+			<p style="margin-top: 10px;">{{item.msg}}</p>
+		</li>
+	</ul>
+</ion-content>
+<!--</ion-view>-->

@@ -1,0 +1,18 @@
+{
+	"index.html": {
+		"resources": [
+			"js/app.js",
+			"templates/tab-comment.html",
+			"templates/tab-lives.html",
+			"js/directive.js",
+			"lib/ionic/js/ionic.bundle.js",
+			"lib/ionic/css/ionic.css",
+			"js/services.js",
+			"templates/tab-topic.html",
+			"css/style.css",
+			"templates/lives-detail.html",
+			"js/controllers.js",
+			"lib/jquery.min.js"
+		]
+	}
+}

@@ -1,0 +1,11 @@
+
+<!--<ion-view view-title="详情">-->
+	<ion-content style="padding-top: 50px;" class="padding">
+		<h3>{{news.title}}</h3>
+	
+		<articcle ng-bind-html="bodys"></articcle>
+		<div>
+			 <a ng-show="morereply" class="moreBtn  button-full button button-positive " href="#/tab/comment/{{news.docid}}">查看跟帖</a>
+		</div>
+	</ion-content>
+<!--</ion-view>-->

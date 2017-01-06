@@ -1,0 +1,33 @@
+<ion-content style="padding-top: 50px;">
+	<span ng-click="topwebba()" class="change-list hotandlate">问吧</span> <span ng-click="totopic()" class="change-list">话题</span>
+	<ion-list show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
+		<ion-item ng-if="wenba" ng-repeat="item in items" class="" href="#/tab/topic/{{item.expertId}}" >
+			<div class="list card" style="width: 110%; padding-left: 0;margin-left: -10px;">
+				<div class="item item-divider" style="line-height: 60px;">
+					<img  style="display: inline-block;  border-radius: 50%;" width="60px" ng-src="{{item.headpicurl}}" alt="" />
+					<div style="display: inline-block;height: 60px;line-height: 60px;">
+						<h2 style="height: 60px; line-height: 60px;">{{item.name}}/{{item.title}}</h2>
+					<p></p>
+					</div>
+				</div>
+				<div class="item item-img">
+						<img width="100%" ng-src="{{item.picurl}}" alt="" />
+				</div>
+				<div class="item item-divider">
+					<p style="white-space: normal;">{{item.description}}</p>
+				</div>
+			</div>
+		</ion-item>
+		<!--href="#/tab/topic/{{item.expertId}}"-->
+		<ion-item style="border: 1px solid gainsboro; margin-top: 5px;" ng-if="!wenba" ng-repeat="item in topics " class=""  >
+			<h2>#{{item.name}}#</h2>
+			<div style="display: flex;justify-content: space-between;">
+				<img ng-src="{{item.picurl}}" width="40px" height="40px" style="border-radius:50% ;" alt="" />
+				<p style="width: 80%;white-space: normal;">{{item.alias}}</p>
+			</div>
+		</ion-item>
+		
+	</ion-list>
+	<!--上拉加载-->
+	<ion-infinite-scroll on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
+</ion-content>

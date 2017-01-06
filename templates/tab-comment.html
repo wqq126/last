@@ -1,0 +1,51 @@
+<!--<ion-content style="padding-top: 50px;">
+	<ion-list show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
+		<ion-item ng-repeat="item in items" class="item-thumbnail-left">
+
+			<comment-list>
+				<ul ng-repeat="item in commentIds">
+
+					<li data="item" comment>
+						<span> {{comments[id]['content']}}</span>
+					</li>
+				</ul>
+			</comment-list>
+		</ion-item>
+	</ion-list>
+	<!--上拉加载-->
+<!--<ion-infinite-scroll on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
+</ion-content>-->
+<ion-content style="padding-top: 50px;">
+	<ion-list>
+	<comment-list show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
+		<ul ng-repeat="item in commentIds">
+
+			<li data="item" comment class="clear" style="position: relative;padding: 5px;">
+
+				<div style="display: inline-block;  width=20%;position: absolute; left: 5px;  top: 5px;   height: 100%;">
+					<img style="display: inline-block;border-radius: 50%;margin-top: 0;" width="40px" height="40px" ng-src="{{comments[id]['user'].avatar||'http://img5.cache.netease.com/tie/images/noface80_80.png'}}" alt="">
+				</div>
+				<div style="display: inline-block; width: 70%;margin-left: 20%;">
+
+					<p class="name">
+						{{ comments[id]['user'].nickname ||'火星网友'}}
+
+					</p>
+					<p class="location">
+						{{comments[id]['user'].location}}
+					</p>
+					<span> {{comments[id]['content']}}</span>
+
+				</div>
+			</li>
+		</ul>
+	</comment-list>
+	</ion-list>
+	<ion-infinite-scroll on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
+</ion-content>
+<style>
+	comment-list li {
+		border: 1px solid darkgray;
+		margin: 10px
+	}
+</style>

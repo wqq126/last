@@ -1,0 +1,129 @@
+/* Empty. Add your own CSS if you like */
+/* Empty. Add your own CSS if you like */
+
+.clear {
+	*zoom: 1;
+}
+
+.clear:after {
+	display: block;
+	content: "clear";
+	height: 0;
+	clear: both;
+	overflow: hidden;
+	visibility: hidden;
+}
+
+a {
+	text-decoration: none;
+}
+
+.backBtn{
+	font-size: 16px;
+	color: blue;
+	margin-left: -5px;
+	text-align: center;
+	line-height: 30px;
+	z-index: 100;
+	background-color: white;
+	display: inline-block;
+	width: 20px;
+}
+
+.nav0bar-container {
+	height: 50px;
+	position: relative;
+	
+}
+
+.navbar {
+	white-space: nowrap;
+	position: absolute;
+	transition: left 1s;
+	left: 0;
+	/*width: 100%;*/
+	/*overflow: hidden;*/
+}
+
+.navbar .checked {
+	color: red;
+	font-size: 16px;
+}
+
+.navbar li {
+	display: inline-block;
+	padding: 5px;
+}
+
+articcle img {
+	width: 100%;
+}
+
+.reply-left {
+	float: left;
+	/*width: 20%;*/
+}
+
+.reply-left img {
+	width: 60px;
+	border-radius: 50%;
+}
+
+.reply-right {
+	float: left;
+	/*width: 65%;*/
+}
+.subBox{
+	overflow: scroll;
+	white-space: nowrap;
+}
+.subBox li{
+	display: inline-block;
+	margin-left: 10px;
+}
+.dialog .glyphicon-pause{
+	background: red;
+}
+.dialog li{
+	border: 1px solid gainsboro;
+	margin-top: 10px;
+	padding: 5px 0;
+	/*width: 80;*/
+}
+.dialog{
+	display: flex;
+	justify-content: space-around;
+}
+.d-left{
+	text-align: center;
+	/*display: inline-block;*/
+	width: 40%;
+}
+.d-right{
+	/*display: inline-block;*/
+	width: 40%;
+	text-align: center;
+}
+.top-h{
+	
+	top: 0;
+	box-sizing: border-box;
+	padding: 50px 50px;
+	position: absolute;color: white;
+	background: grey;
+	opacity: 0.7;
+	height: 100%;
+	color: whitesmoke;
+	text-align: center;
+}
+.hotandlate{
+	color: white;
+	background: red;
+}
+.change-list{
+	padding: 5px;
+	margin-top: 20px;
+	/*border: 1px solid gray;*/
+	margin-left: 5px;
+	border: none;
+}
