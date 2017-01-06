@@ -74,12 +74,16 @@ angular.module('starter.controllers', [])
 		})
 	}])
 	//直播控制器
-	.controller('liveCtrl', ['liveService', '$scope', function(liveService, $scope) {
+	.controller('liveCtrl', ['$ionicSlideBoxDelegate','liveService', '$scope', function($ionicSlideBoxDelegate,liveService, $scope) {
 		liveService.getfirst().then(function(res) {
 			$scope.items = res.data.live_review;
 			$scope.tops = res.data.top;
+//			console.log($scope.tops);
+			$ionicSlideBoxDelegate.loop(true);
+			$ionicSlideBoxDelegate.update();
 			$scope.subs = res.data.sublives;
 		})
+		 
 		$scope.loadMore = function() {
 			var promise = liveService.getNext();
 			if(promise) {

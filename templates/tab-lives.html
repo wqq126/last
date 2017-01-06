@@ -11,16 +11,16 @@
 </style>
 <ion-content style="padding-top: 50px;">
 	<!-- start 轮播图-->
-	<!--<ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true" slide-interval=2000 show-pager="true" pager-click="pageClick(index)" active-slide="model.activeIndex" delegate-handle="delegateHandler">
-		
-		<ion-slide ng-repeat="top in tops">
-			<div class="box">
+	<ion-slide-box auto-play="true" slide-interval=2000
+		 does-continue="true" delegate-handle="slideimgs"
+		 class="slidebox" style="width: 100%;">
+		<ion-slide ng-repeat="top in tops" style="width: 100%;">
+			<div class="lunbobox">
 				<img ng-src="{{top.image}}" alt="" />
 				<p>{{top.roomName}}</p>
 			</div>
 		</ion-slide>
-	</ion-slide-box>-->
-
+	</ion-slide-box>
 	<!-- end 轮播图-->
 	<!--中间全部直播-->
 	<ul class="subBox">
@@ -34,7 +34,7 @@
 	<!--//直播列表-->
 	<ion-list>
 		<ion-item class="" ng-repeat="item in items" href="#/tab/lives/{{item.roomId}}">
-			<img width="100%" ng-src="{{item.image}}" alt="" />
+			<img width="110%" ng-src="{{item.image}}" alt="" />
 			<p>{{item.roomName}}</p>
 		</ion-item>
 	</ion-list>

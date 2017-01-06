@@ -1,59 +1,59 @@
 angular.module('starter')
-.directive('isSelect',function(){
-	return {
-		restrict:'C',
-		link:function(scope,ele,attr){
-			ele.on('click',function(){
-				var isSelect = $(this).hasClass("glyphicon-pause");
-				if(isSelect){
-					$(this).removeClass("glyphicon-pause");
-				}else{
-					$(this).addClass("glyphicon-pause");
-				}
-			})
+	.directive('isSelect', function() {
+		return {
+			restrict: 'C',
+			link: function(scope, ele, attr) {
+				ele.on('click', function() {
+					var isSelect = $(this).hasClass("glyphicon-pause");
+					if(isSelect) {
+						$(this).removeClass("glyphicon-pause");
+					} else {
+						$(this).addClass("glyphicon-pause");
+					}
+				})
+			}
 		}
-	}
-})
+	})
 
-.directive('moreBtn',function(){
-	return {
-		restrict:'C',
-		link:function(scope,ele,attr){
-			scope.filteralldescription = scope.description;
-//			console.log(alldescription)
-			
-			ele.on('click',function(){
-				var isSelect = $(this).hasClass("ion-chevron-up");
-				if(isSelect){
-					$(this).removeClass("ion-chevron-up");
-					$(this).addClass("ion-chevron-down");
-				}else{
-					$(this).removeClass("ion-chevron-down")
-					$(this).addClass("ion-chevron-up");
-				}
-			})
+.directive('moreBtn', function() {
+		return {
+			restrict: 'C',
+			link: function(scope, ele, attr) {
+				scope.filteralldescription = scope.description;
+				//			console.log(alldescription)
+
+				ele.on('click', function() {
+					var isSelect = $(this).hasClass("ion-chevron-up");
+					if(isSelect) {
+						$(this).removeClass("ion-chevron-up");
+						$(this).addClass("ion-chevron-down");
+					} else {
+						$(this).removeClass("ion-chevron-down")
+						$(this).addClass("ion-chevron-up");
+					}
+				})
+			}
 		}
-	}
-})
-.directive('changeList',function(){
-	return {
-		restrict:'C',
-		link:function(scope,ele,attr){
-			ele.on('click',function(){
-				$(this).siblings().removeClass("hotandlate");
-				$(this).addClass("hotandlate");
-			})
+	})
+	.directive('changeList', function() {
+		return {
+			restrict: 'C',
+			link: function(scope, ele, attr) {
+				ele.on('click', function() {
+					$(this).siblings().removeClass("hotandlate");
+					$(this).addClass("hotandlate");
+				})
+			}
 		}
-	}
-})
-.directive('navBar', ['headList', '$state', function(headList, $state) {
+	})
+	.directive('navBar', ['headList', '$state', function(headList, $state) {
 		return {
 			restrict: 'CE',
 			templateUrl: 'templates/navBar.html',
 			link: function(scope, ele, attr) {
 				headList.getHead().then(function(res) {
 					scope.headerList = res.data.tList;
-//					console.log(res.data.tList)
+					//					console.log(res.data.tList)
 				});
 				ele.on('click touch', 'a', function(e) {
 					var a = e.target;
@@ -77,7 +77,6 @@ angular.module('starter')
 		}
 	}])
 
-
 .directive('commentList', function() {
 		return {
 			restrict: 'EC',
@@ -87,25 +86,19 @@ angular.module('starter')
 					$scope.commentIds = data.data.commentIds;
 					$scope.comments = data.data.comments;
 					$scope.data = data.data;
-//					console.log(typeof $scope.commentIds)
 				});
 				$scope.loadMore = function() {
 					var promise = commentService.getNext(replyId);
 					if(promise) {
 						promise.then(function(res) {
-							$scope.commentIds  = res.data.commentIds;
+							$scope.commentIds = res.data.commentIds;
 							$scope.comments = res.data.comments;
 							$scope.data = res.data;
-							
-//							$scope.commentIds = angular.extend($scope.commentIds,commentIds);
-//							$scope.comments = angular.extend($scope.comments,comments);
-//							$scope.data = angular.extend($scope.data,data);
-//							console.log($scope.commentIds)
+
 							$scope.$broadcast('scroll.infiniteScrollComplete');
 						})
 					}
 					$scope.$broadcast('scroll.infiniteScrollComplete');
-//					commentService.setReqState(false);
 				}
 			},
 			link: function(scope, ele, attr) {
@@ -124,6 +117,25 @@ angular.module('starter')
 			}
 		}
 	})
+	.directive('swap', ['$state', function($state) {
+		return {
+			restrict: 'A',
+			link: function(scope, ele, attr) {
+				$(document.documentElement).on('touchstart', function(e) {
+					var startLeft =  e.originalEvent.targetTouches[0]['clientX'],
+						endLeft, swapLeft;
+					$(document.documentElement).on('touchend', function(e) {
+						endLeft = e.originalEvent.changedTouches[0].clientX;
+						swapLeft = endLeft - startLeft;
+						if(swapLeft) {
+							history.go(-1);
+						}
+						$(document.documentElement).off("touchend");
+					})
+				})
+			}
+		}
+	}])
 	.directive('comment', function() {
 		return {
 			scope: {
