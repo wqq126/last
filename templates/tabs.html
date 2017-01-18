@@ -1,25 +1,20 @@
 <header class="bar bar-header bar-light">
 	<nav-bar></nav-bar>
 	<span  onClick="javascript: history.go(-1);" class="backBtn ion-ios-undo"></span>
+	<span class="ion-ios-arrow-down show-dia"></span>
+	<head-list class="dropBox"></head-list>
 </header>
-
-
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
-
   <!-- Dashboard Tab -->
   <ion-tab title="新闻" icon-off="ion-clipboard" icon-on="ion-clipboard" href="#/tab/news">
     <ion-nav-view name="tab-news"></ion-nav-view>
   </ion-tab>
-
   <!-- Chats Tab -->
   <ion-tab title="直播" icon-off="ion-ios-monitor" icon-on="ion-ios-monitor" href="#/tab/lives">
     <ion-nav-view name="tab-lives"></ion-nav-view>
   </ion-tab>
-
   <!-- Account Tab -->
   <ion-tab title="话题" icon-off="ion-chatbox-working" icon-on="ion-chatbox-working" href="#/tab/topic">
     <ion-nav-view name="tab-topic"></ion-nav-view>
   </ion-tab>
-
-
 </ion-tabs>

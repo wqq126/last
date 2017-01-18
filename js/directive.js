@@ -76,8 +76,45 @@ angular.module('starter')
 
 		}
 	}])
+	.directive('headList', ['headList', '$state', function(headList, $state) {
+		return {
+			restrict: 'CE',
+			templateUrl: 'templates/headlist.html',
+			link: function(scope, ele, attr) {
+				headList.getHead().then(function(res) {
+					scope.headerList = res.data.tList;
+				});
+				$(ele).on('click', 'i', function() {
+					$(this).parent().remove();
+				})
+				$(ele).on('touchstart', 'a', function(e) {
+						var startT = Date.now();
+						$(ele).on('touchend', 'a', function(e) {
+							var endT = Date.now();
+							var t = endT - startT;
+							if(t > 1000) {
+								$(this).next().show();
+								e.preventDefault();
+								return false;
+							}
+							$('.show-dia').removeClass('ion-ios-arrow-up');
+							$('.show-dia').addClass('ion-ios-arrow-down');
+							$('.dropBox').hide();
+							$(ele).off("touchend");
 
-.directive('commentList', function() {
+						})
+
+					})
+					//				ele.on('click', 'a', function(e) {
+					//					$('.dropBox').hide();
+					//
+					//				})
+
+			}
+
+		}
+	}])
+	.directive('commentList', function() {
 		return {
 			restrict: 'EC',
 			controller: function($stateParams, commentService, $scope, $state) {
@@ -122,16 +159,41 @@ angular.module('starter')
 			restrict: 'A',
 			link: function(scope, ele, attr) {
 				$(document.documentElement).on('touchstart', function(e) {
-					var startLeft =  e.originalEvent.targetTouches[0]['clientX'],
+					var startLeft = e.originalEvent.targetTouches[0]['clientX'],
 						endLeft, swapLeft;
 					$(document.documentElement).on('touchend', function(e) {
 						endLeft = e.originalEvent.changedTouches[0].clientX;
 						swapLeft = endLeft - startLeft;
-						if(swapLeft) {
+						if(swapLeft > 100) {
 							history.go(-1);
 						}
 						$(document.documentElement).off("touchend");
 					})
+				})
+			}
+		}
+	}])
+	.directive('showDia', ['headList', function(headList) {
+
+		return {
+			restrict: 'C',
+			//			templateUrll:'templates/headlist.html',
+			link: function(scope, ele, attr) {
+				//				headList.getHead().then(function(res) {
+				//					scope.headerList = res.data.tList;
+				//					console.log(scope.headerList);
+				//				});
+				$(ele).on('click', function() {
+
+					if($(this).hasClass('ion-ios-arrow-down')) {
+						$(this).removeClass('ion-ios-arrow-down');
+						$(this).addClass('ion-ios-arrow-up');
+						$('.dropBox').show();
+					} else {
+						$(this).addClass('ion-ios-arrow-down');
+						$(this).removeClass('ion-ios-arrow-up');
+						$('.dropBox').hide();
+					}
 				})
 			}
 		}

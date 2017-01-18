@@ -215,7 +215,8 @@
 					"css/style.css",
 					"templates/lives-detail.html",
 					"js/controllers.js",
-					"lib/jquery.min.js"
+					"lib/jquery.min.js",
+					"templates/details/topic-detail.html"
 				],
 				"refer": [],
 				"priority": 0

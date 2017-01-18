@@ -2,7 +2,11 @@ angular.module('starter.controllers', [])
 
 .controller('NewListCtrl', ['$stateParams', '$scope', 'headService', function($stateParams, $scope, headService) {
 	var id = $stateParams.id || 'T1348654204705';
+	$scope.isData = true;
 	headService.getLists(id).then(function(res) {
+		if(res.data[id].length==0){
+			$scope.isData = false;
+		}
 		$scope.items = res.data[id];
 	})
 	$scope.loadMore = function() {
@@ -10,9 +14,12 @@ angular.module('starter.controllers', [])
 		if(promise) {
 			promise.then(function(res) {
 				var items = res.data[id];
+				if($scope.items){
 				$scope.items = $scope.items.concat(items);
 				$scope.$broadcast('scroll.infiniteScrollComplete');
-				headService.setReqState(false);
+				headService.setReqState(false);	
+				}
+				
 			})
 		}
 	}
@@ -78,12 +85,18 @@ angular.module('starter.controllers', [])
 		liveService.getfirst().then(function(res) {
 			$scope.items = res.data.live_review;
 			$scope.tops = res.data.top;
-//			console.log($scope.tops);
 			$ionicSlideBoxDelegate.loop(true);
 			$ionicSlideBoxDelegate.update();
 			$scope.subs = res.data.sublives;
+//			console.log($scope.subs);
 		})
-		 
+		$scope.datefilter = function(item){
+			var item = item.replace(/-/g,'/');
+			var date = new Date(item)
+//			console.log(date.getTime())
+			var newitem = date.getTime();
+//			return newitem;
+		}
 		$scope.loadMore = function() {
 			var promise = liveService.getNext();
 			if(promise) {
